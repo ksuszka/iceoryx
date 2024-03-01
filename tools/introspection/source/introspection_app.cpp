@@ -308,12 +308,12 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
     constexpr int32_t runtimeNameWidth{23};
     constexpr int32_t nodeNameWidth{23};
     // uncomment once this information is needed
-    // constexpr int32_t sampleSizeWidth{12};
-    // constexpr int32_t chunkSizeWidth{12};
-    // constexpr int32_t chunksWidth{12};
-    // constexpr int32_t intervalWidth{19};
+    constexpr int32_t sampleSizeWidth{12};
+    constexpr int32_t chunkSizeWidth{12};
+    constexpr int32_t chunksWidth{12};
+    constexpr int32_t intervalWidth{19};
     constexpr int32_t subscriptionStateWidth{14};
-    // constexpr int32_t fifoWidth{17};    // uncomment once this information is needed
+    constexpr int32_t fifoWidth{17};    // uncomment once this information is needed
     constexpr int32_t scopeWidth{12};
     constexpr int32_t interfaceSourceWidth{8};
 
@@ -325,10 +325,10 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
     wprintw(pad, " %*s |", runtimeNameWidth, "Process");
     wprintw(pad, " %*s |", nodeNameWidth, "Node");
     // uncomment once this information is needed
-    // wprintw(pad, " %*s |", sampleSizeWidth, "Sample Size");
-    // wprintw(pad, " %*s |", chunkSizeWidth, "Chunk Size");
-    // wprintw(pad, " %*s |", chunksWidth, "Chunks");
-    // wprintw(pad, " %*s |", intervalWidth, "Last Send Interval");
+    wprintw(pad, " %*s |", sampleSizeWidth, "Sample Size");
+    wprintw(pad, " %*s |", chunkSizeWidth, "Chunk Size");
+    wprintw(pad, " %*s |", chunksWidth, "Chunks");
+    wprintw(pad, " %*s |", intervalWidth, "Last Send Interval");
     wprintw(pad, " %*s\n", interfaceSourceWidth, "Src. Itf.");
 
     wprintw(pad, " %*s |", serviceWidth, "");
@@ -337,10 +337,10 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
     wprintw(pad, " %*s |", runtimeNameWidth, "");
     wprintw(pad, " %*s |", nodeNameWidth, "");
     // uncomment once this information is needed
-    // wprintw(pad, " %*s |", sampleSizeWidth, "[Byte]");
-    // wprintw(pad, " %*s |", chunkSizeWidth, "[Byte]");
-    // wprintw(pad, " %*s |", chunksWidth, "[/Minute]");
-    // wprintw(pad, " %*s |", intervalWidth, "[Milliseconds]");
+    wprintw(pad, " %*s |", sampleSizeWidth, "[Byte]");
+    wprintw(pad, " %*s |", chunkSizeWidth, "[Byte]");
+    wprintw(pad, " %*s |", chunksWidth, "[/Minute]");
+    wprintw(pad, " %*s |", intervalWidth, "[Milliseconds]");
     wprintw(pad, " %*s\n", interfaceSourceWidth, "");
 
     wprintw(pad, "---------------------------------------------------------------------------------------------------");
@@ -382,10 +382,10 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
     for (auto& publisherPort : publisherPortData)
     {
         // uncomment once this information is needed
-        // std::string m_sampleSize{"n/a"};
-        // std::string m_chunkSize{"n/a"};
-        // std::string m_chunksPerMinute{"n/a"};
-        // std::string sendInterval{"n/a"};
+        std::string m_sampleSize{"n/a"};
+        std::string m_chunkSize{"n/a"};
+        std::string m_chunksPerMinute{"n/a"};
+        std::string sendInterval{"n/a"};
 
         currentLine = 0;
         do
@@ -397,10 +397,10 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
             wprintw(pad, " %s |", printEntry(runtimeNameWidth, publisherPort.portData->m_name).c_str());
             wprintw(pad, " %s |", printEntry(nodeNameWidth, publisherPort.portData->m_node).c_str());
             // uncomment once this information is needed
-            // wprintw(pad, " %s |", printEntry(sampleSizeWidth, m_sampleSize).c_str());
-            // wprintw(pad, " %s |", printEntry(chunkSizeWidth, m_chunkSize).c_str());
-            // wprintw(pad, " %s |", printEntry(chunksWidth, m_chunksPerMinute).c_str());
-            // wprintw(pad, " %s |", printEntry(intervalWidth, sendInterval).c_str());
+            wprintw(pad, " %s |", printEntry(sampleSizeWidth, m_sampleSize).c_str());
+            wprintw(pad, " %s |", printEntry(chunkSizeWidth, m_chunkSize).c_str());
+            wprintw(pad, " %s |", printEntry(chunksWidth, m_chunksPerMinute).c_str());
+            wprintw(pad, " %s |", printEntry(intervalWidth, sendInterval).c_str());
             wprintw(
                 pad,
                 " %s\n",
@@ -423,7 +423,7 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
     wprintw(pad, " %*s |", runtimeNameWidth, "Process");
     wprintw(pad, " %*s |", nodeNameWidth, "Node");
     wprintw(pad, " %*s |", subscriptionStateWidth, "Subscription");
-    // wprintw(pad, " %*s |", fifoWidth, "FiFo"); // uncomment once this information is needed
+    wprintw(pad, " %*s |", fifoWidth, "FiFo"); // uncomment once this information is needed
     wprintw(pad, " %*s\n", scopeWidth, "Propagation");
 
     wprintw(pad, " %*s |", serviceWidth, "");
@@ -432,7 +432,7 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
     wprintw(pad, " %*s |", runtimeNameWidth, "");
     wprintw(pad, " %*s |", nodeNameWidth, "");
     wprintw(pad, " %*s |", subscriptionStateWidth, "State");
-    // wprintw(pad, " %*s |", fifoWidth, "size / capacity"); // uncomment once this information is needed
+    wprintw(pad, " %*s |", fifoWidth, "size / capacity"); // uncomment once this information is needed
     wprintw(pad, " %*s\n", scopeWidth, "scope");
 
     wprintw(pad, "---------------------------------------------------------------------------------------------------");
@@ -473,19 +473,19 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
                                subscriptionStateToString(subscriber.subscriberPortChangingData->subscriptionState))
                         .c_str());
             // uncomment once this information is needed
-            // if (currentLine == 0)
-            //{
-            // std::string fifoSize{"n/a"};     // std::to_string(subscriber.subscriberPortChangingData->fifoSize))
-            // std::string fifoCapacity{"n/a"}; // std::to_string(subscriber.subscriberPortChangingData->fifoCapacity))
-            // wprintw(pad,
-            //" %s / %s |",
-            // printEntry(((fifoWidth / 2) - 1), fifoSize).c_str(),
-            // printEntry(((fifoWidth / 2) - 1), fifoCapacity).c_str());
-            //}
-            // else
-            //{
-            // wprintw(pad, " %*s |", fifoWidth, "");
-            //}
+            if (currentLine == 0)
+            {
+            std::string fifoSize{"n/a"};     // std::to_string(subscriber.subscriberPortChangingData->fifoSize))
+            std::string fifoCapacity{"n/a"}; // std::to_string(subscriber.subscriberPortChangingData->fifoCapacity))
+            wprintw(pad,
+            " %s / %s |",
+            printEntry(((fifoWidth / 2) - 1), fifoSize).c_str(),
+            printEntry(((fifoWidth / 2) - 1), fifoCapacity).c_str());
+            }
+            else
+            {
+            wprintw(pad, " %*s |", fifoWidth, "");
+            }
             wprintw(pad,
                     " %s\n",
                     printEntry(scopeWidth,
@@ -502,7 +502,7 @@ void IntrospectionApp::printPortIntrospectionData(const std::vector<ComposedPubl
         wprintw(pad, " %*s |", runtimeNameWidth, "");
         wprintw(pad, " %*s |", nodeNameWidth, "");
         wprintw(pad, " %*s |", subscriptionStateWidth, "");
-        // wprintw(pad, " %*s |", fifoWidth, ""); // uncomment once this information is needed
+        wprintw(pad, " %*s |", fifoWidth, ""); // uncomment once this information is needed
         wprintw(pad, " %*s", scopeWidth, "");
         wprintw(pad, "\n");
     }
